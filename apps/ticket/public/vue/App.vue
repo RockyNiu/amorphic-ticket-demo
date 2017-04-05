@@ -31,6 +31,14 @@
     }
   })
   export default class App extends Vue {
+    isLogin: boolean = false;
+
+    created() {
+      this.$on('login', function () {
+        console.log('========== LOGIN ON ==========');
+        this.$router.push('/tickets');
+      }.bind(this))
+    }
   }
 
 
