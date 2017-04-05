@@ -130,6 +130,7 @@
           .catch(function (e) {
             return console.log('Register *****EEEEEEE*******');
           });
+      this.$parent.$emit('registration');
     }
   }
 </script>

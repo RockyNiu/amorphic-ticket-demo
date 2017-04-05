@@ -31,13 +31,15 @@
     }
   })
   export default class App extends Vue {
-    isLogin: boolean = false;
-
     created() {
       this.$on('login', function () {
         console.log('========== LOGIN ON ==========');
         this.$router.push('/tickets');
-      }.bind(this))
+      }.bind(this));
+      this.$on('registration', function () {
+        console.log('========== REGISTRATION ==========');
+        this.$router.push('/login');
+      }.bind(this));
     }
   }
 
