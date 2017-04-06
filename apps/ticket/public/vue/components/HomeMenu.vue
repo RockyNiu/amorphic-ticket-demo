@@ -47,9 +47,9 @@
         <span style="align:center">{{controller.status}}</span>
         <span style="color: red;align:center">{{controller.error}}</span>
       </p>
-      jquery<p id="welcome-message">Hello</p>
-      method<p>{{methodsRandom()}}</p>
-      computed<p>{{computedRandom}}</p>
+      <!--jquery<p id="welcome-message">Hello</p>-->
+      <!--method<p>{{methodsRandom()}}</p>-->
+      <!--computed<p>{{computedRandom}}</p>-->
     </div>
     <!--<div class="container" id="container" style="margin-top: 50px">-->
     <!-- component matched by the route will render here -->
@@ -76,7 +76,7 @@
   export default class HomeMenu extends Vue {
     // Initial data can be declared as instance properties
     controller: Controller;
-    test: number = 1;
+//    test: number = 1;
     @Inject(amorphicService) amorphicService: AmorphicService;
     // Component methods can be declared as instance methods
     created() {
@@ -89,17 +89,17 @@
       this.$router.push('/');
     }
 
-    get computedRandom(): number {
-      this.test += 1;
-      return Date.now();
-    }
-
-    @Watch('test')
-    onTestChanged (val: number) {
-      let p = $('#welcome-message');
-      console.log(p.text());
-      p.text(val + ' ' + Date.now());
-    }
+//    get computedRandom(): number {
+//      this.test += 1;
+//      return Date.now();
+//    }
+//
+//    @Watch('test')
+//    onTestChanged (val: number) {
+//      let p = $('#welcome-message');
+//      console.log(p.text());
+//      p.text(val + ' ' + Date.now());
+//    }
 
   }
 </script>
