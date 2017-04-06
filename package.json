@@ -30,6 +30,7 @@
     "connect-history-api-fallback": "^1.3.0",
     "core-js": "^2.4.1",
     "es6-promise": "*",
+    "jquery": "^3.2.1",
     "q": "*",
     "reflect-metadata": "^0.1.10",
     "rxjs": "5.0.1",

@@ -47,28 +47,37 @@
         <span style="align:center">{{controller.status}}</span>
         <span style="color: red;align:center">{{controller.error}}</span>
       </p>
+      jquery<p id="welcome-message">Hello</p>
+      method<p>{{methodsRandom()}}</p>
+      computed<p>{{computedRandom}}</p>
     </div>
     <!--<div class="container" id="container" style="margin-top: 50px">-->
-      <!-- component matched by the route will render here -->
+    <!-- component matched by the route will render here -->
     <!--</div>-->
   </div>
 </template>
 
 <script lang="ts">
   import * as Vue from 'vue';
-  import Component from 'vue-class-component';
-  import {Inject} from 'vue-property-decorator';
+  import {Component, Inject, Model, Prop, Watch} from 'vue-property-decorator'
   import {Controller} from '../../js/controller';
   import {amorphicService} from '../common/constants';
   import {AmorphicService} from '../common/amorphic.service';
+  import $ = require('jquery');
 
   // The @Component decorator indicates the class is a Vue component
-  @Component({})
+  @Component({
+    methods: {
+      methodsRandom: function () {
+        return Date.now();
+      }
+    }
+  })
   export default class HomeMenu extends Vue {
     // Initial data can be declared as instance properties
     controller: Controller;
+    test: number = 1;
     @Inject(amorphicService) amorphicService: AmorphicService;
-//        controller: Controller = window.controller
     // Component methods can be declared as instance methods
     created() {
       this.controller = this.amorphicService.controller;
@@ -79,5 +88,18 @@
       this.controller.password = '';
       this.$router.push('/');
     }
+
+    get computedRandom(): number {
+      this.test += 1;
+      return Date.now();
+    }
+
+    @Watch('test')
+    onTestChanged (val: number) {
+      let p = $('#welcome-message');
+      console.log(p.text());
+      p.text(val + ' ' + Date.now());
+    }
+
   }
 </script>
